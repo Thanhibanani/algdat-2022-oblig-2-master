@@ -10,7 +10,7 @@ Oppgaven er levert av følgende studenter:
 
 I oppgaven har vi hatt følgende arbeidsfordeling:
 * Per har hatt hovedansvar for oppgave 1, 3, og 5. 
-* Emil har hatt hovedansvar for oppgave 4, 7.
+* Emil har hatt hovedansvar for oppgave 4, 7 og 10.
 * Fatima har hatt hovedansvar for oppgave 7 og 8. 
 
 # Oppgavebeskrivelse
