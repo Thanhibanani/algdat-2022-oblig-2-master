@@ -224,7 +224,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         endringer++;
     }
 
-
+    // Til Oppgave 4
     @Override
     public boolean inneholder(T verdi) {
             return indeksTil(verdi) != -1;
@@ -265,7 +265,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         return returNode;
     }
-
+    
+    // Oppgave 4
     @Override
     public int indeksTil(T verdi) {
         if (verdi == null) {                            // Sjekker om verdi finnes
@@ -302,7 +303,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public T fjern(int indeks) {
         throw new UnsupportedOperationException();
     }
-
+    
+    // Oppgave 7
     @Override
     public void nullstill() {
         // Metode 1
