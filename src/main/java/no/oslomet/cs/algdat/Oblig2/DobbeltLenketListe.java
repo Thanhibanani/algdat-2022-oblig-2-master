@@ -227,8 +227,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean inneholder(T verdi) {
-        throw new UnsupportedOperationException();
-    }
+            return indeksTil(verdi) != -1;
+        }
 
 
     @Override
@@ -268,7 +268,17 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public int indeksTil(T verdi) {
-        throw new UnsupportedOperationException();
+        if (verdi == null) {                            // Sjekker om verdi finnes
+            return -1;                                  // Returnerer -1 dersom den ikke gjør det
+        }
+        Node<T> aktuell = hode;                         // Finner verdien til hode og putter den verdien i en variabel
+        for (int i = 0; i < antall; i++) {              // Standard for løkke som itererer gjennom lista antall ganger.
+            if (aktuell.verdi.equals(verdi)) {          // Dersom aktuell.verdi er det samme som verdi, returneres i.
+                return i;
+            }
+            aktuell = aktuell.neste;                    // Oppdaterer noden aktuell til verdien i aktuell.neste
+        }
+        return -1;                                      // Returnerer -1
     }
 
     @Override
