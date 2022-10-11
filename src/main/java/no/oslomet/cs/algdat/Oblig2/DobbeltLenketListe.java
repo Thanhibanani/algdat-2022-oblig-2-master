@@ -305,7 +305,21 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void nullstill() {
-        throw new UnsupportedOperationException();
+        // Metode 1
+        Node<T> aktuell = hode;                         // Node aktuell får verdien i hode
+        while (aktuell != null) {                       // While setning på når aktuell ikke er lik null
+            hode = aktuell.neste;                       // Oppdaterer hode til aktuell.neste
+            hode.forrige = null;                        // Oppdaterer hode forrige til null
+            aktuell = hode;                             // Oppdaterer aktuell til hode
+
+            if (hode == hale) {                         // If setning på om hode er det samme som hale
+                antall = 0;                             // Gir antall verdien 0
+                hode = hale = null;                     // Setter hode og hale sin verdi til null
+                endringer++;                            // Øker antall endringer med en.
+                break;                                  // Stopper loop.
+            }
+            antall--;                                   // Antall teller nedover
+        }
     }
 
 
