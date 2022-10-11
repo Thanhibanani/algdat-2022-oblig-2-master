@@ -4,9 +4,7 @@ package no.oslomet.cs.algdat.Oblig2;
 ////////////////// class DobbeltLenketListe //////////////////////////////
 
 
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Objects;
+import java.util.*;
 
 
 public class DobbeltLenketListe<T> implements Liste<T> {
@@ -290,6 +288,50 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     //Oppgave 6
     @Override
+    public boolean fjern(T verdi) {
+        if (verdi == null) {
+            return false;
+        }
+
+        Node<T> current = hode;
+
+        //Første fjernes
+        if (verdi.equals(current.verdi)) {
+            if (current.neste != null) {
+                hode = current.neste;
+                hode.forrige = null;
+            } else {
+                hode = null;
+                hale = null;
+            }
+            antall--;
+            endringer++;
+            return true;
+        }
+
+        //Siste fjernes
+        current = hale;
+        if (verdi.equals(current.verdi)) {
+            hale = current.forrige;
+            hale.neste = null;
+            antall--;
+            endringer++;
+            return true;
+        }
+
+        //Mellom fjernes
+        current = hode.neste;
+        for (; current != null; current = current.neste) {
+            if (verdi.equals(current.verdi)) {
+                current.forrige.neste = current.neste;  //Noden til venstre for current peker på noden til høyre
+                current.neste.forrige = current.forrige;//Noden til høyre for current peker på noden til venstre
+                antall--;
+                endringer++;
+                return true;
+            }
+        }
+        return false;
+    }
     public T fjern(int indeks) {
         indeksKontroll(indeks, false);
 
