@@ -514,15 +514,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             endringer++;
             iteratorendringer++;
 
-        } // class DobbeltLenketListeIterator
+        }
+    } // class DobbeltLenketListeIterator
 
         //Oppgave 10
 
         public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
-            throw new UnsupportedOperationException();
-        }
 
-    }
+            }
+
 }//class DobbeltLenketListe
-
-
