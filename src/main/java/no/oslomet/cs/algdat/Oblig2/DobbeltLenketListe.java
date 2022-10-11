@@ -520,7 +520,17 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         //Oppgave 10
 
         public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
+            Objects.requireNonNull(liste, "Null-verdier er ikke tillatt");  // Tester for null-verdi
 
+            for(int i = 0; i < liste.antall(); i++){                                // for løkke itererer gjennom listen
+                for(int j = 0; j < i; j++){                                         // nestet for løkke
+                    if((c.compare(liste.hent(i), liste.hent(j))) < 0){              // compare setning mellom liste.hent(i) og liste.hent(j) ved hjelp av komparatoren c
+                        T verdi = liste.hent(i);                                    // midlertidig variabel som henter verdien i variabelen i
+                        T verdi2 = liste.hent(j);                                   // midlertidig variabel som henter verdien i variabelen j
+                        liste.oppdater(i,verdi2);                                   // oppdaterer i med verdien i verdi2
+                        liste.oppdater(j,verdi);                                    // oppdaterer j med verdien i verdi
+                    }
+                }
             }
-
-}//class DobbeltLenketListe
+        }
+} //class DobbeltLenketListe
