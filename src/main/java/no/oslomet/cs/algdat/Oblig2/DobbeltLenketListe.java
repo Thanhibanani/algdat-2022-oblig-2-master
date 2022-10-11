@@ -294,14 +294,50 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return gammelVerdi;                              // Returnerer nodens verdi før den ble oppdatert
     }
 
-    @Override
-    public boolean fjern(T verdi) {
-        throw new UnsupportedOperationException();
-    }
-
+    //Oppgave 6
     @Override
     public T fjern(int indeks) {
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks, false);
+
+        Node<T> current = hode;
+        T verdi;
+
+        //Første fjernes
+        if (indeks == 0) {
+            verdi = current.verdi;
+
+            if (current.neste != null) {
+                hode = current.neste;
+                hode.forrige = null;
+            } else {
+                hode = null;
+                hale = null;
+            }
+        }
+
+        
+        else if (indeks == antall - 1) { //Fjerner siste
+            current = hale;
+            verdi = hale.verdi;
+
+            hale = current.forrige;
+            hale.neste = null;
+        }
+
+        
+        else {//Fjerner mellom
+            for (int i = 0; i < indeks; i++) {
+                current = current.neste;
+            }
+            verdi = current.verdi;
+
+            current.forrige.neste = current.neste;  //Noden til venstre for current peker på noden til høyre
+            current.neste.forrige = current.forrige;//Noden til høyre for current peker på noden til venstre
+        }
+
+        antall--;
+        endringer++;
+        return verdi;
     }
     
     // Oppgave 7
@@ -364,15 +400,17 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         utskrift.append("]");
         return utskrift.toString();
     }
-
+    
+    //Oppgave 8
 
     @Override
     public Iterator<T> iterator() {
-        throw new UnsupportedOperationException();
+        return new DobbeltLenketListeIterator();
     }
 
     public Iterator<T> iterator(int indeks) {
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks,false);
+        return new DobbeltLenketListeIterator(indeks);
     }
 
     private class DobbeltLenketListeIterator implements Iterator<T> {
@@ -387,7 +425,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         private DobbeltLenketListeIterator(int indeks) {
-            throw new UnsupportedOperationException();
+            denne=finnNode(indeks);
+            fjernOK=false;
+            iteratorendringer =endringer;
         }
 
         @Override
@@ -396,16 +436,63 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         @Override
-        public T next() {
-            throw new UnsupportedOperationException();
+        public T next()
+        {
+            if (!hasNext()) throw new NoSuchElementException("Ingen verdier!");
+
+            if (endringer != iteratorendringer)
+                throw new ConcurrentModificationException("Endring på listen!!!!!!");
+            T temp = denne.verdi;
+            denne=denne.neste;
+
+            fjernOK=true;
+            return temp;
+
+            // returnerer verdien
         }
 
+        
+        //Oppgave 9
         @Override
-        public void remove() {
-            throw new UnsupportedOperationException();
-        }
+        public void remove()
+        {
+            if(!fjernOK) {
+                throw new IllegalStateException("Ulovlig tilstand!!!!!!!!!");
+            }
+            if(iteratorendringer !=endringer) {
+                throw new ConcurrentModificationException("Endring på listen, lol");
+            }
 
-    } // class DobbeltLenketListeIterator
+            fjernOK=false;
+            Node<T> q=hode;
+
+            if (antall == 1){ //hvis det er bare en node i listen
+                hode= hale = null;
+            }
+             else if(denne==null){//hvis den siste skal bort
+                 q=hale;
+                 hale = hale.forrige;
+                 hale.neste =null;
+            }
+             else if (denne.forrige ==hode){ //hvis den første skal bort.
+                 hode=hode.neste;
+                 hode.forrige=null;
+            }
+             else{//q fjernes
+                 q=denne.forrige;
+                 q.forrige.neste=q.neste;
+                 q.neste.forrige=q.forrige;
+            }
+
+             q.verdi =null;
+             q.forrige =q.neste=null;
+             antall--;
+             endringer++;
+             iteratorendringer++;
+
+        } // class DobbeltLenketListeIterator
+        
+        //Oppgave 10
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
         throw new UnsupportedOperationException();
