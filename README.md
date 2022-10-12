@@ -2,7 +2,7 @@
 
 Denne oppgaven er en innlevering i Algoritmer og Datastrukturer. 
 Oppgaven er levert av følgende studenter:
-* Thanh Nguyen, S354587, s123456@oslomet.no
+* Thanh Nguyen, S354587, s354587@oslomet.no
 * Emil Thoresen, S377316, s377316@oslomet.no
 * Sam kanaan, s364575, s364575@oslomet.no
 
