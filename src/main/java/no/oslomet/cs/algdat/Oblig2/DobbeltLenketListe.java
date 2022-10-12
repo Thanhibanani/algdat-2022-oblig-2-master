@@ -388,6 +388,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
             antall--;                                   // Antall teller nedover
         }
+        /* Metode 2
+        for (Node<T> verdi = hode; verdi != null; verdi=verdi.neste) {
+            fjern(0);
+        }
+        */
     }
 
 
