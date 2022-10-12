@@ -2,7 +2,7 @@
 
 Denne oppgaven er en innlevering i Algoritmer og Datastrukturer. 
 Oppgaven er levert av følgende studenter:
-* Navn Navnesen, S123456, s123456@oslomet.no
+* Thanh Nguyen, S354587, s123456@oslomet.no
 * Emil Thoresen, S377316, s377316@oslomet.no
 * Sam kanaan, s364575, s364575@oslomet.no
 
@@ -41,7 +41,9 @@ returneres i. Etter dette har vi en oppdatering av noden aktuell. Og til slutt r
 I oppgave 5 lager vi metoden legginn ideks, verdi. starter med å kaste unntak, hvis antall er lik null så legger vi
 inn verdi hvis ikke så opretter ny hode og ny hale og sette hver på riktig plass.
 
-I oppgave 6  
+I oppgave 6  lager vi boolean fjern,  først så fjerner vi første node, deretter siste node, og mellomsnode finner mellom node ved å finne noden til venstre for current og gjør at den peker på noden til høyre, deretter noden høyre for current peker til venstre.
+
+Vi lager også public fjern indeks. Der vi bruker indekskontroll, og gjør samme prosess.
 
 I oppgave 7 starter vi med en node som får verdien i hode. Deretter en while setning på når aktuell ikke er lik null. 
 Da oppdateres hode til aktuell.neste. Hode oppdateres til null, og aktuell oppdateres til hode. 
@@ -49,9 +51,9 @@ Videre har vi en if setning dersom hode er lik hale. Denne gir antall verdien 0.
 Deretter setter vi verdien til hode og hale = null. endringer++ øker antall endringer med en. 
 Og break for å stoppe loopen. Til slutt har vi antall-- som teller nedover. Metode 2 fungerer også. 
 
-I oppgave 8 
+I oppgave 8 Her lager vi iterator hasNext metode og next metode som skal finne endringer på verdien.
 
-I oppgave 9 
+I oppgave 9 Her lager vi remove metode. Som finner noder som skal bort. Vi lager if-setninger for å finne riktige noder som skal fjernes
 
 I oppgave 10 starter vi med en requireNonNull som tester etter null-verdier som ikke er tillatt. 
 Videre har vi en for løkke som itererer gjennom listen. Etter dette har vi en nestet for løkke. 
